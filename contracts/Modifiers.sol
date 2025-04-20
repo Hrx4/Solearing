@@ -30,8 +30,8 @@ contract Mod{
         paused=false;
     }
 
-    function transfer(address to , uint amount) public checkPause {
-        require(balance[owner]>=amount, "Not enough balance.");
+    function transfer(address to , uint amount) public payable  checkPause {
+        require(balance[msg.sender]>=amount, "Not enough balance.");
         balance[msg.sender] -= amount;
         balance[to] += amount;
     }
